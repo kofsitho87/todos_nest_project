@@ -1,10 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodoSchema } from './models/m.todo.entity';
-import { UserSchema } from './models/m.user.entity';
 import { TodoService } from './todo/todo.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './models/user.entity2';
@@ -28,13 +25,13 @@ import { AuthModule } from './auth/auth.module';
     }),
     TypeOrmModule.forFeature([User, Todo]),
 
-    MongooseModule.forRoot(process.env.DATABASE_HOST, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }),
-    MongooseModule.forFeature([{ name: 'users', schema: UserSchema }]),
-    MongooseModule.forFeature([{ name: 'todos', schema: TodoSchema }]),
+    // MongooseModule.forRoot(process.env.DATABASE_HOST, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    //   useCreateIndex: true,
+    // }),
+    // MongooseModule.forFeature([{ name: 'users', schema: UserSchema }]),
+    // MongooseModule.forFeature([{ name: 'todos', schema: TodoSchema }]),
     AuthModule,
   ],
   controllers: [AppController],
